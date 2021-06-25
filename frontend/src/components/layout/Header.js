@@ -2,7 +2,7 @@ import {
     MoonIcon, SunIcon
 } from '@chakra-ui/icons';
 import {
-    Avatar, Box, Button, Flex, HStack, IconButton, LinkBox, LinkOverlay, Menu,
+    Avatar, Box, Button, Flex, HStack, IconButton, LinkBox, LinkOverlay, Menu, Image,
     MenuButton, MenuDivider, MenuItem, MenuList, useColorMode, useColorModeValue, useDisclosure, useToast
 } from '@chakra-ui/react';
 import React, { useRef } from "react";
@@ -38,12 +38,13 @@ export default function Header() {
 
     return (
         <>
-            <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-                <Flex h={16} alignItems={'center'} justifyContent={'space-around'}>
-                    <HStack spacing={8} alignItems={'center'}>
+            {/* <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} pos="fixed" w="100%" zIndex={2}> */}
+            <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} >
+                <Flex h={16} alignItems={'center'} justifyContent={'space-around'} >
+                    <HStack spacing={8} alignItems={'center'} >
                         <LinkBox>
                             <LinkOverlay as={ReachLink} to="/">
-                                Logo
+                                <Image boxSize="80px" objectFit="cover" src="/images/logo.png" />
                             </LinkOverlay>
                         </LinkBox>
                     </HStack>

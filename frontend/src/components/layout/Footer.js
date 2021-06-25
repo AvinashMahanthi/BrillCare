@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import {
     Box,
-    Button,
+    chakra,
     Container,
     Link,
     Stack,
@@ -8,8 +9,8 @@ import {
     useColorModeValue,
     VisuallyHidden,
 } from '@chakra-ui/react';
+import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Logo = (props) => {
     return (
@@ -36,7 +37,7 @@ const SocialButton = ({
     href,
 }) => {
     return (
-        <Button
+        <chakra.button
             bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
             rounded={'full'}
             w={8}
@@ -53,12 +54,11 @@ const SocialButton = ({
             }}>
             <VisuallyHidden>{label}</VisuallyHidden>
             {children}
-        </Button>
+        </chakra.button>
     );
 };
 
 export default function SmallCentered() {
-    const year = new Date().getFullYear();
     return (
         <Box
             bg={useColorModeValue('gray.50', 'gray.900')}
@@ -91,16 +91,16 @@ export default function SmallCentered() {
                     spacing={4}
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}>
-                    <Text>© {year} Sathyabama Dental. All rights reserved</Text>
+                    <Text>© 2021 Brill Care. All rights reserved</Text>
                     <Stack direction={'row'} spacing={6}>
                         <SocialButton label={'Twitter'} href={'#'}>
-                            {/* <FaTwitter /> */}
+                            <FaTwitter />
                         </SocialButton>
                         <SocialButton label={'YouTube'} href={'#'}>
-                            {/* <FaYoutube /> */}
+                            <FaYoutube />
                         </SocialButton>
                         <SocialButton label={'Instagram'} href={'#'}>
-                            {/* <FaInstagram /> */}
+                            <FaInstagram />
                         </SocialButton>
                     </Stack>
                 </Container>
@@ -108,8 +108,3 @@ export default function SmallCentered() {
         </Box>
     );
 }
-SocialButton.propTypes = {
-    children: PropTypes.any,
-    label: PropTypes.any,
-    href: PropTypes.any,
-};

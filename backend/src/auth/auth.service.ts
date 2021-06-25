@@ -18,6 +18,16 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  // googleLogin(req) {
+  //   if (!req.user) {
+  //     return 'No user from google';
+  //   }
+  //   return {
+  //     message: 'User Info from Google',
+  //     user: req.user,
+  //   };
+  // }
+
   async signUp(
     authCredentialsDTO: AuthCredentialsDTO,
   ): Promise<{ accessToken: string }> {

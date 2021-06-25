@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const MetaData = ({ title }) => {
     return (
         <Helmet>
-            <title>{`${title} - Sathyabama Dental`}</title>
+            <title>{`${title} - Brill Care`}</title>
         </Helmet>
     )
 }

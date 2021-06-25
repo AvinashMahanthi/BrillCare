@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { UsersRepository } from './users.repository';
+// import { GoogleStrategy } from './google.strategy';
 
 @Module({
   imports: [

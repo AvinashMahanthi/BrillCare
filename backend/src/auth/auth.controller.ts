@@ -20,6 +20,18 @@ import { User } from './user.entity';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  // @Get()
+  // @UseGuards(AuthGuard('google'))
+  // async googleAuth(@Req() req) {
+
+  // }
+
+  // @Get('auth/google/callback')
+  // @UseGuards(AuthGuard('google'))
+  // googleAuthRedirect(@Req() req) {
+  //   return this.authService.googleLogin(req);
+  // }
+
   @Post('/signup')
   signUp(
     @Body() authCredentialsDTO: AuthCredentialsDTO,

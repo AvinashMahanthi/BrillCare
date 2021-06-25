@@ -75,6 +75,26 @@ function Sidebar({ btnRef, isOpen, onClose, onOpen }) {
                                     </LinkBox>
                                 </AccordionPanel>
                             </AccordionItem>
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton>
+                                        <Box flex="1" textAlign="left">
+                                            Services
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    <LinkBox as={MenuItem} height="30px">
+                                        <LinkOverlay as={ReachLink} to="/admin/services" _hover={{
+                                            textDecoration: 'none',
+                                            color: "black"
+                                        }}>
+                                            All Services
+                                        </LinkOverlay>
+                                    </LinkBox>
+                                </AccordionPanel>
+                            </AccordionItem>
                         </Accordion>
                     </DrawerBody>
                 </DrawerContent>
