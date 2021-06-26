@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsString,
   Matches,
   MaxLength,
@@ -26,9 +27,9 @@ export class AuthCredentialsDTO {
   })
   password: string;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  department: string;
+  contactNumber: number;
 
   role?: string;
 }

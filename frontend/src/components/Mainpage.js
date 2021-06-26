@@ -15,16 +15,15 @@ const Mainpage = () => {
             <Flex align={'end'} justify={"flex-end"} p={10} minH={["80vh", "100vh"]}
                 backgroundImage="url(./images/home-banner.jpg)"
             >
-                <Stack
+                <Stack align="center"
                     textAlign={'center'}
-                    align={'flex-end'}
                     spacing={{ base: 8, md: 10 }}
                     py={{ base: 20, md: 28 }}>
                     <Heading
                         fontWeight={600}
                         fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
-                        Meeting scheduling{' '}
+                        Meeting scheduling
                         <Text as={'span'} color={'orange.400'}>
                             made easy
                         </Text>

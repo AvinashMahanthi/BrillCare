@@ -11,14 +11,14 @@ import { Form, Formik } from "formik"
 import {
     InputControl, NumberInputControl, SelectControl, TextareaControl
 } from "formik-chakra-ui"
-const NewPatient = ({ history }) => {
+const NewPatient = ({ history, match }) => {
     const toast = useToast()
     const dispatch = useDispatch();
 
     const { error, success } = useSelector(state => state.newPatient);
+    const userId = match.params.userId;
 
     useEffect(() => {
-
         if (error) {
             toast({
                 title: error,
@@ -30,7 +30,6 @@ const NewPatient = ({ history }) => {
         }
 
         if (success) {
-            history.push('/admin/patients');
             toast({
                 title: 'Patient created successfully',
                 status: "success",
@@ -67,6 +66,7 @@ const NewPatient = ({ history }) => {
                         <Stack spacing={4}>
                             <Formik
                                 initialValues={{
+                                    userId,
                                     outPatientId: '',
                                     name: '',
                                     age: '',
@@ -81,11 +81,12 @@ const NewPatient = ({ history }) => {
                             >
                                 {() => (
                                     <Form>
+                                        <InputControl mt={3} name="userId" hidden />
                                         <InputControl mt={3} name="outPatientId" placeholder="YYYY___" label="OutPatient Id" />
                                         <InputControl mt={3} placeholder="John Abraham" name="name" label="Name" />
                                         <NumberInputControl mt={3} name="age" label="Age" />
                                         <SelectControl mt={3}
-                                            name="sex" label="Sex" selectProps={{ placeholder: "Select option" }}
+                                            name="sex" label="Gender" selectProps={{ placeholder: "Select option" }}
                                         >
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -123,4 +124,5 @@ export default NewPatient
 
 NewPatient.propTypes = {
     history: PropTypes.any,
+    match: PropTypes.any,
 };

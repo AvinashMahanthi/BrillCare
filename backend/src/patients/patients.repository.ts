@@ -1,8 +1,9 @@
 import { ConflictException } from '@nestjs/common';
+import { User } from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreatePatientDTO } from './dto/create-patient.dto';
 import { Patient } from './patient.entity';
-
+import { v4 as uuid } from 'uuid';
 @EntityRepository(Patient)
 export class PatientsRepository extends Repository<Patient> {
   async getAllPatients(): Promise<Patient[]> {
@@ -12,27 +13,18 @@ export class PatientsRepository extends Repository<Patient> {
     return patients;
   }
   async createPatient(
+    user: User,
     createPatientDTO: CreatePatientDTO,
   ): Promise<Patient | string> {
     try {
-      const {
-        outPatientId,
-        name,
-        age,
-        sex,
-        contactNumber,
-        occupation,
-        residentialAddress,
-      } = createPatientDTO;
-
+      const { name, sex, contactNumber } = createPatientDTO;
+      const url = `https://localhost:3000/meet/${uuid}`;
       const patient = this.create({
-        outPatientId,
+        userId: user.id,
         name,
-        age,
         sex,
         contactNumber,
-        occupation,
-        residentialAddress,
+        url,
       });
       await this.save(patient);
       return patient;

@@ -18,7 +18,7 @@ import UpdatePassword from './components/user/UpdatePassword'
 
 // Admin Imports
 import PatientList from './components/admin/PatientList'
-import NewPatient from './components/admin/NewPatient'
+import NewPatient from './components/user/NewPatient'
 import UpdatePatient from './components/admin/UpdatePatient'
 import UsersList from './components/admin/UsersList'
 import UpdateUser from './components/admin/UpdateUser'
@@ -56,11 +56,11 @@ function App() {
         <ProtectedRoute path="/me" component={Profile} exact />
         <ProtectedRoute path="/me/update" component={UpdateProfile} exact />
         <ProtectedRoute path="/password/update" component={UpdatePassword} exact />
+        <ProtectedRoute path="/:userId/book-appointment" component={NewPatient} exact />
 
       </div>
 
       <ProtectedRoute path="/admin/patients" isAdmin={true} component={PatientList} exact />
-      <ProtectedRoute path="/admin/patient" isAdmin={true} component={NewPatient} exact />
       <ProtectedRoute path="/admin/patient/:id" isAdmin={true} component={UpdatePatient} exact />
       <ProtectedRoute path="/admin/users" isAdmin={true} component={UsersList} exact />
       <ProtectedRoute path="/admin/user/:id" isAdmin={true} component={UpdateUser} exact />

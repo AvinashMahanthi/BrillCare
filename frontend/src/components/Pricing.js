@@ -31,7 +31,7 @@ function PriceWrapper({ children }) {
 
 export default function ThreeTierPricing() {
     return (
-        <Box py={12}>
+        <Box py={12} bg={useColorModeValue('gray.100', 'gray.700')}>
             <VStack spacing={2} textAlign="center">
                 <Heading as="h1" fontSize="4xl">
                     Plans that fit your need

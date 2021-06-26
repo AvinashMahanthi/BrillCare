@@ -4,7 +4,6 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
 import { AuthCredentialsDTO } from './dto/auth-credentials.dto';
@@ -14,19 +13,16 @@ import { UpdateUserDTO } from './dto/update-user.dto';
 import { User } from './user.entity';
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {
-  constructor(private jwtService: JwtService) {
-    super();
-  }
   async createUser(authCredentialsDTO: AuthCredentialsDTO) {
-    const { username, password, department, email } = authCredentialsDTO;
+    const { username, password, contactNumber, email } = authCredentialsDTO;
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = this.create({
       username,
-      department,
+      contactNumber,
       email,
       password: hashedPassword,
-      role: 'Unauthorized',
+      role: 'User',
     });
     try {
       return await this.save(user);
@@ -39,6 +35,7 @@ export class UsersRepository extends Repository<User> {
       }
     }
   }
+
   async updateUserPassword(
     updatePasswordDTO: UpdatePasswordDTO,
     userId: string,
@@ -68,7 +65,7 @@ export class UsersRepository extends Repository<User> {
     updateUserDTO: UpdateUserAdminDTO,
     userId: string,
   ): Promise<{ success: boolean }> {
-    const { password, department, role } = updateUserDTO;
+    const { password, role } = updateUserDTO;
     const user = await this.findOne(userId);
     const isMatched = password
       ? await bcrypt.compare(password, user.password)
@@ -77,7 +74,6 @@ export class UsersRepository extends Repository<User> {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.password = hashedPassword;
     }
-    user.department = department;
     user.role = role;
     this.update(user.id, user);
     return { success: true };

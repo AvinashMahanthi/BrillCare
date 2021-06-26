@@ -40,9 +40,10 @@ export class PatientsController {
 
   @Post()
   createPatient(
+    @GetUser() user: User,
     @Body() createPatientDTO: CreatePatientDTO,
   ): Promise<Patient | string> {
-    return this.patientsService.createPatient(createPatientDTO);
+    return this.patientsService.createPatient(user, createPatientDTO);
   }
 
   @Put('/:patientId')

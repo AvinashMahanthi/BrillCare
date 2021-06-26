@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/auth/user.entity';
 import { CreatePatientDTO } from './dto/create-patient.dto';
 import { Patient } from './patient.entity';
 import { PatientsRepository } from './patients.repository';
@@ -24,7 +25,7 @@ export class PatientsService {
   }
 
   async getPatientById(id: string): Promise<Patient> {
-    const found = await this.patientsRepository.findOne({ outPatientId: id });
+    const found = await this.patientsRepository.findOne({ id });
     if (!found) {
       throw new NotFoundException(`Patient with ID '${id}' Not Found`);
     }
@@ -38,8 +39,11 @@ export class PatientsService {
     return found;
   }
 
-  createPatient(createPatientDTO: CreatePatientDTO): Promise<Patient | string> {
-    return this.patientsRepository.createPatient(createPatientDTO);
+  createPatient(
+    user: User,
+    createPatientDTO: CreatePatientDTO,
+  ): Promise<Patient | string> {
+    return this.patientsRepository.createPatient(user, createPatientDTO);
   }
 
   async deletePatient(id: string): Promise<{ success: boolean }> {

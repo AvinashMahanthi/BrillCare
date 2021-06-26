@@ -32,7 +32,6 @@ const UpdateUser = ({ history, match }) => {
                 username: user.username,
                 email: user.email,
                 role: user.role,
-                department: user.department
             })
         }
 
@@ -97,13 +96,13 @@ const UpdateUser = ({ history, match }) => {
                                             <Form>
                                                 <InputControl mt={3} name="username" label="Username" />
                                                 <InputControl mt={3} name="email" label="Email" />
-                                                <SelectControl mt={3} isReadOnly={user.department === 'Administrator'}
+                                                <SelectControl mt={3} isReadOnly={user.role === 'Administrator'}
                                                     name="role" label="Role"
                                                 >
                                                     <option value="Authorized">Authorized</option>
                                                     <option value="Unauthorized">Unauthorized</option>
                                                 </SelectControl>
-                                                <SelectControl mt={3} isReadOnly={user.department === 'Administrator'}
+                                                <SelectControl mt={3} isReadOnly={user.role === 'Administrator'}
                                                     name="department" label="Department"
                                                 >
                                                     <option value="D1">D1</option>

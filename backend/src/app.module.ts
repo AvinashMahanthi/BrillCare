@@ -10,7 +10,7 @@ import { Department1Module } from './department1/department1.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      database: 'sdh',
+      database: 'brill-care',
       username: 'postgres',
       password: 'postgres',
       synchronize: true,

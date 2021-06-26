@@ -9,10 +9,11 @@ import {
     Container,
     Avatar,
     useColorModeValue,
+    Center
 } from '@chakra-ui/react';
 
 const Testimonial = ({ children }) => {
-    return <Box>{children}</Box>;
+    return <Center><Box>{children}</Box></Center>;
 };
 
 const TestimonialContent = ({ children }) => {
@@ -20,6 +21,7 @@ const TestimonialContent = ({ children }) => {
         <Stack
             bg={useColorModeValue('white', 'gray.800')}
             boxShadow={'lg'}
+            w={[300, 400]}
             p={8}
             rounded={'xl'}
             align={'center'}
@@ -113,6 +115,8 @@ export default function WithSpeechBubbles() {
                         <TestimonialContent>
                             <TestimonialHeading>Intuitive Design</TestimonialHeading>
                             <TestimonialText>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
+                                neque sed imperdiet nibh lectus feugiat nunc sem.
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
                                 neque sed imperdiet nibh lectus feugiat nunc sem.
                             </TestimonialText>

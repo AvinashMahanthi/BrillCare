@@ -8,9 +8,6 @@ import {
 
 export class UpdateUserAdminDTO {
   @IsString()
-  department: string;
-
-  @IsString()
   role: string;
 
   @IsString()
