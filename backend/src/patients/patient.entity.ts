@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   BaseEntity,
   Column,
@@ -40,3 +41,27 @@ export class Patient extends BaseEntity {
   )
   patientDOneData: PatientDOneData;
 }
+=======
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class Patient extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column()
+  userId: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  sex: string;
+
+  @Column()
+  contactNumber: string;
+
+  @Column()
+  url: string;
+}
+>>>>>>> e69bf408f72bae21a1f856095045c902092c7150

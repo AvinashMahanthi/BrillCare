@@ -17,7 +17,7 @@ const Mainpage = () => {
         backgroundImage="url(./images/home-banner.jpg)"
       >
         <Stack
-          align={"center"}
+          align="center"
           textAlign={"center"}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 20, md: 28 }}
@@ -27,7 +27,7 @@ const Mainpage = () => {
             fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            Meeting scheduling{" "}
+            Meeting scheduling
             <Text as={"span"} color={"orange.400"}>
               made easy
             </Text>
@@ -48,7 +48,7 @@ const Mainpage = () => {
               Get started
             </Button>
             <Button rounded={"full"} px={6}>
-              About Us
+              About us
             </Button>
           </Stack>
         </Stack>
